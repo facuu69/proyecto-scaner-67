@@ -243,7 +243,7 @@ body {
     padding-top: 15px;
 }
 
-/* @media adapta la web para que la pueda ver el celu */
+/* @media adapta la web para que la pueda ver el celu ..*/
 @media (max-width: 768px) {
     .divididapantalla,
     .simulador-colorlib-split {
