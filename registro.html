@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargar - Control de Netbooks EEST N°5</title>
+    <link rel="stylesheet" href="indexpruebaestili.css">
+</head>
+<body>
+
+    <div class="divididapantalla">
+        <aside class="lado-izquierdo">
+            <div class="agrupador">
+                <div class="marca-escuela">E.E.S.T. N° 5</div>
+                <h2 class="titulo-izquierdo">Netbook dl gobierno<br>Control</h2>
+            </div>
+        </aside>
+
+        <main class="lado-derecho">
+            <header>
+                <nav class="menu-navegacion">
+                    <ul>
+                        <li><a href="indexprueba.html">Inicio</a></li>
+                        <li><a href="registro.html" class="activo">Cargar Préstamo</a></li>
+                        <li><a href="historial.html">Historial</a></li>
+                        <li><a href="reglas.html">reglamento</a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <section class="contenido-principal">
+                <h1 class="titulo-principal">NUEVO PRÉSTAMO</h1>
+                
+                <form id="formPrestamo" class="formulario-clean">
+                    <label class="etiqueta-form">Nombre del Alumno:</label>
+                    <input type="text" id="nombre" class="input-form" placeholder="Ej: dario" required>
+
+                    <label class="etiqueta-form">Apellido del Alumno:</label>
+                    <input type="text" id="apellido" class="input-form" placeholder="Ej: martinez" required>
+
+                    <label class="etiqueta-form">Curso / Año:</label>
+                    <input type="text" id="curso" class="input-form" placeholder="Ej: 6to 1ra" required>
+
+                    <label class="etiqueta-form">Número de Serie PC:</label>
+                    <input type="text" id="serie" class="input-form" placeholder="Ej: JM-676767" required>
+
+                    <button type="button" id="btnGuardar" class="boton-fucsia-colorlib" style="border:none; margin-top:15px; cursor:pointer;">GUARDAR EN HISTORIAL</button>
+                </form>
+            </section>
+
+            <footer>
+                <p class="pie-pagina"> 2026 - Diseñado por Estudiantes de la E.E.S.T. N° 5 - Merlo</p>
+            </footer>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,270 @@
+/* variables  DE COLORES */
+
+:root {
+    --color-fondo-der: #ffffff;
+    --color-fucsia-colorlib: #28c00a; /* Color  para botones y enlaces */
+    --color-fucsia-hover: #837f81;
+    --color-texto-oscuro: #95b1f0;
+    --color-texto-gris: #070707;
+}
+
+/* ESTILOS Y BASE */
+body {
+    font-family: 'Open Sans', sans-serif;/*tipo de letra de lo contario si no hay el navegador pone una predeterminada*/
+    margin: 0;/*margen*/
+    padding: 0;/*relleno entre contenido y  el borde*/
+    box-sizing: border-box;/*tamano que yo eleji, sino el navagador pone uno predeterminado */
+}
+
+/* CONTENEDOR (PANTALLA DIVIDIDA) */
+.divididapantalla{
+    display: flex;/*acomoda uno al lado de otro*/
+    min-height: 100vh;/*ocupa la altura de la pantalla*/
+    width: 100%;/*ocupa el ancho*/
+}
+
+/* Lado izquierdo */
+.lado-izquierdo {
+    width: 50%; /*ocupa la mitad */
+}
+
+.agrupador {
+    background-color: rgba(74, 131, 206, 0.65); 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.marca-escuela {
+    color: #fffcfc;
+    text-shadow: 20px 10px 5px rgba(0, 0, 0, 0.5);/*som*/
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.titulo-izquierdo {
+    color: #f2f2f5;
+    text-shadow: 20px 10px 5px rgba(0, 0, 0, 0.5);/*som*/
+    font-family: 'Montserrat', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.2;
+}
+
+
+.titulo-izquierdo span {
+    color: #eeecec;
+    text-shadow: 20px 10px 5px rgba(0, 0, 0, 0.5);/*som*/
+}
+
+/* Lado derecho (Bloque blanco de formularios y control) */
+.lado-derecho {
+    width: 50%;
+    background-color: var(--color-fondo-der);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+/* MENÚ DE NAVEGACIÓN  */
+.menu-navegacion ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+}
+
+.menu-navegacion ul li {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.menu-navegacion ul li a {
+    text-decoration: none;
+    color: var(--color-texto-gris);
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
+
+.menu-navegacion ul li a:hover, 
+.menu-navegacion ul li a.activo {
+    color: var(--color-fucsia-colorlib);
+}
+
+/* CONTENIDO PRINCIPAL Y TIPo letra */
+.contenido-principal {
+    max-width: 500px;
+    margin: auto 0;
+}
+
+.titulo-principal {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: var(--color-texto-oscuro);
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+.descripcion, 
+.descripcion-corta {
+    color: var(--color-texto-gris);
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.descripcion { font-size: 15px; }
+.descripcion-corta { font-size: 14px; }
+
+/*BOTONES  */
+.boton-fucsia-colorlib {
+    display: inline-block;
+    background-color: var(--color-fucsia-colorlib);
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    padding: 15px 35px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+.boton-fucsia-colorlib:hover {
+    background-color: var(--color-fucsia-hover);
+}
+
+.formulario-clean {
+    margin-top: 15px;
+}
+
+.etiqueta-form {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: var(--color-texto-oscuro);
+    margin-top: 15px;
+    text-transform: uppercase;
+}
+
+.input-form {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+}
+
+/*TABLA DE CONTROL DE ALUMNOS (HISTORIAL) */
+.tabla-netbooks {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.tabla-netbooks th {
+    background-color: #f4f4f4;
+    color: var(--color-texto-oscuro);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 10px;
+    text-align: left;
+    text-transform: uppercase;
+    border: 1px solid #e1e1e1;
+}
+
+.tabla-netbooks td {
+    padding: 10px;
+    border: 1px solid #e1e1e1;
+}
+
+
+.boton-tabla-cambiar {
+    background-color: var(--color-texto-oscuro);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    text-transform: uppercase;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
+
+.boton-borrar-historial {
+    background-color: #d90429;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 15px;
+}
+
+/* LISTAS Y PIE DE PÁGINA*/
+  
+.lista-normas {
+    padding-left: 20px;
+    color: var(--color-texto-gris);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.pie-pagina {
+    font-size: 12px;
+    color: #999999;
+    margin: 0;
+    border-top: 1px solid #eeeeee;
+    padding-top: 15px;
+}
+
+/* @media adapta la web para que la pueda ver el celu */
+@media (max-width: 768px) {
+    .divididapantalla,
+    .simulador-colorlib-split {
+        flex-direction: column;
+    }
+    .lado-izquierdo {
+        width: 100%;
+        height: 200px;
+    }
+    .lado-derecho {
+        width: 100%;
+        padding: 20px;
+    }
+    .menu-navegacion ul {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .tabla-netbooks, thead, tbody, th, td, tr {
+        display: block;
+    }
+    .tabla-netbooks th {
+        display: none;
+    }
+}
