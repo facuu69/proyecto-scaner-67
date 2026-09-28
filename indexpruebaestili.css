@@ -8,7 +8,7 @@
     --color-texto-gris: #070707;
 }
 
-/* ESTILOS Y BASE */
+/* ESTILOS Y BASE. */
 body {
     font-family: 'Open Sans', sans-serif;/*tipo de letra de lo contario si no hay el navegador pone una predeterminada*/
     margin: 0;/*margen*/

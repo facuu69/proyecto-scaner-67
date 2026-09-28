@@ -15,8 +15,8 @@ Intitucion:E.E.S.T.N^5
 Prof:pereira
 
 Lenguajes utilizados:
-HTML
-CSS
+HTML.
+CSS.
 
 
 
