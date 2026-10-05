@@ -1,34 +1,31 @@
-/* variables  DE COLORES */
 
 :root {
     --color-fondo-der: #ffffff;
-    --color-fucsia-colorlib: #28c00a; /* Color  para botones y enlaces */
+    --color-fucsia-colorlib: #28c00a; 
     --color-fucsia-hover: #837f81;
     --color-texto-oscuro: #95b1f0;
     --color-texto-gris: #131111;
 }
 
-/* ESTILOS Y BASE. */
+
 body {
-    font-family: 'Open Sans', sans-serif;/*tipo de letra de lo contario si no hay el navegador pone una predeterminada*/
-    margin: 0;/*margen*/
-    padding: 0;/*relleno entre contenido y  el borde*/
-    box-sizing: border-box;/*tamano que yo eleji, sino el navagador pone uno predeterminado */
+    font-family: 'Open Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* CONTENEDOR (PANTALLA DIVIDIDA) */
 .divididapantalla{
-    display: flex;/*acomoda uno al lado de otro*/
-    min-height: 100vh;/*ocupa la altura de la pantalla*/
-    width: 100%;/*ocupa el ancho*/
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
 }
 
-/* Lado izquierdo */
 .lado-izquierdo {
-    width: 50%; /*ocupa la mitad */
+    width: 50%;
     background-image: url('images logo del colegio.jpg');
-    background-size: 217px; /* Para que cubra todo el espacio */
-    background-position: center; /* Para que la imagen quede centrada */
+    background-size: 217px;
+    background-position: center; 
 }
 
 
@@ -48,7 +45,7 @@ body {
 .marca-escuela {
     
     color: #fffcfc;
-    text-shadow: 20px 10px 5px rgba(0, 0, 0, 0.5);/*som*/
+    text-shadow: 20px 10px 5px rgba(0, 0, 0, 0.5);
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
     font-size: 18px;
@@ -68,10 +65,10 @@ body {
 
 .titulo-izquierdo span {
     color: #eeecec;
-    text-shadow: 20px 10px 5px rgba(0, 0, 0, 0.5);/*som*/
+    text-shadow: 20px 10px 5px rgba(0, 0, 0, 0.5);
 }
 
-/* Lado derecho (Bloque blanco de formularios y control) */
+
 .lado-derecho {
     width: 50%;
     background-color: var(--color-fondo-der);
@@ -82,7 +79,6 @@ body {
     box-sizing: border-box;
 }
 
-/* MENÚ DE NAVEGACIÓN  */
 .menu-navegacion ul {
     list-style: none;
     padding: 0;
@@ -231,7 +227,6 @@ body {
     margin-top: 15px;
 }
 
-/* LISTAS Y PIE DE PÁGINA.*/
   
 .lista-normas {
     padding-left: 20px;
@@ -248,7 +243,6 @@ body {
     padding-top: 15px;
 }
 
-/* @media adapta la web para que la pueda ver el celu ..*/
 @media (max-width: 768px) {
     .divididapantalla,
     .simulador-colorlib-split {
