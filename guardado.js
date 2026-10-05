@@ -1,12 +1,6 @@
-// ==========================================
-// SISTEMA DE CONTROL DE NETBOOKS - EEST N°5
-// ==========================================
 
 document.addEventListener("DOMContentLoaded", function () {
 
-    // ==========================================
-    // 1. GUARDAR PRÉSTAMO
-    // ==========================================
 
     const btnGuardar = document.getElementById("btnGuardar");
 
@@ -19,13 +13,12 @@ document.addEventListener("DOMContentLoaded", function () {
             const curso = document.getElementById("curso").value.trim();
             const serie = document.getElementById("serie").value.trim();
 
-            // Comprobar que todos los campos estén completos
+            
             if (nombre === "" || apellido === "" || curso === "" || serie === "") {
                 alert("Por favor, completá todos los campos.");
                 return;
             }
 
-            // Crear el nuevo préstamo
             const nuevoPrestamo = {
                 nombre: nombre,
                 apellido: apellido,
@@ -33,9 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 serie: serie,
                 estado: "Prestada",
                 fecha: new Date().toLocaleDateString()
-            };
-
-            // Obtener historial anterior
+            }
             let historial = JSON.parse(
                 localStorage.getItem("historialPrestamos")
             ) || [];
@@ -56,10 +47,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-
-    // ==========================================
-    // 2. MOSTRAR HISTORIAL
-    // ==========================================
 
     const tablaHistorial = document.getElementById("tablaHistorial");
 
@@ -84,10 +71,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-
-    // ==================='=======================
-    // 3. BORRAR TODO EL HISTORIAL
-    // ==========================================
 
     const btnBorrarTodo = document.getElementById("btnBorrarTodo");
 
