@@ -7,7 +7,6 @@
     --color-texto-gris: #131111;
 }
 
-
 body {
     font-family: 'Open Sans', sans-serif;
     margin: 0;
@@ -20,17 +19,32 @@ body {
     min-height: 100vh;
     width: 100%;
 }
-
 .lado-izquierdo {
     width: 50%;
-    background-image: url('images logo del colegio.jpg');
-    background-size: 217px;
-    background-position: center; 
+    background-image: linear-gradient(rgba(0, 40, 100, 0.75), rgba(0, 86, 179, 0.85)), url('fotocompu.jpg');
+    background-size: cover;
+    
+    background-position:center; 
+    
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    box-sizing: border-box;
+    position: relative;
+}
+.mini-logo {
+    width: 70px; 
+    height: auto;
+    border-radius: 8px; 
+    background-color: white;
+    padding: 5px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
 }
 
-
 .agrupador {
-
     top: 0; 
     left: 0; 
     width: 100%; 
@@ -41,7 +55,12 @@ body {
     padding: 40px;
     box-sizing: border-box;
 }
-
+.top-izquierdo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    gap: 10px; 
+}
 .marca-escuela {
     
     color: #fffcfc;
@@ -60,6 +79,7 @@ body {
     font-weight: 700;
     margin: 0;
     line-height: 1.2;
+    margin-top:auto;
 }
 
 
@@ -67,16 +87,14 @@ body {
     color: #eeecec;
     text-shadow: 20px 10px 5px rgba(0, 0, 0, 0.5);
 }
-
-
 .lado-derecho {
     width: 50%;
-    background-color: var(--color-fondo-der);
+    background-color: rgba(255, 255, 255, 0.85); 
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding: 40px;
-    box-sizing: border-box;
+    box-sizing: border-box; 
 }
 
 .menu-navegacion ul {
