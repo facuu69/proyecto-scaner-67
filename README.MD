@@ -5,13 +5,13 @@ Este proyecto esta disenado para el equipo directivo de la Escuela tecnica N°5 
 En un futuro le podriamos agregar un scaner como el de los supermercados para los productos pero en nuestro caso es para scanear el codigo de barra de las netbook y ser mas sencillo cargarlas a la web .
 
 Integrantes:
-IAN CAPDEVILA
-VALENTINO MONJE TINTE
-FACUNDO LENCINAS 
+IAN CAPDEVILA,
+VALENTINO MONJE TINTE,
+FACUNDO LENCINAS,
 CRISTIAN DUARTE
 
 Curso:6°1° grupo A
-Intitucion:E.E.S.T.N^5
+Intitucion:E.E.S.T.N°5
 Prof:pereira
 
 Lenguajes utilizados:
