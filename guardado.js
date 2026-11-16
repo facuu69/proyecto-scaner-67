@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
         { codigo: "PC-05", serie: "JM-5555" }
     ];
 
-    
     window.mostrarRegistroProfe = function() {
         document.getElementById("pantallaPrestamo").classList.add("oculto");
         document.getElementById("pantallaProfe").classList.remove("oculto");
@@ -18,7 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("pantallaProfe").classList.add("oculto");
         document.getElementById("pantallaPrestamo").classList.remove("oculto");
     }
-
 
     const selectPC = document.getElementById("selectPC");
     if (selectPC) {
@@ -30,63 +28,75 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-  
-window.autocompletarProfe = function() {
-    const codigoProfe = document.getElementById("codigoProfe").value.trim().toUpperCase();
-    let profesores = JSON.parse(localStorage.getItem("baseProfesores")) || [];
-    let profeValido = profesores.find(p => p.codigo === codigoProfe);
-
-    if (profeValido) {
-        
-        document.getElementById("nombre").value = profeValido.nombre;
-        document.getElementById("apellido").value = profeValido.apellido;
-        document.getElementById("curso").value = profeValido.curso;
-    } else {
-     
-        document.getElementById("nombre").value = "";
-        document.getElementById("apellido").value = "";
-        document.getElementById("curso").value = "";
+    // autocompletar
+    const inputCodigoProfe = document.getElementById("codigoProfe");
+    
+    if (inputCodigoProfe) {
+        inputCodigoProfe.addEventListener("blur", function () {
+            const codigo = this.value.trim().toUpperCase(); 
+            
+            if (codigo !== "") {
+                let profesores = JSON.parse(localStorage.getItem("baseProfesores")) || [];
+                let profe = profesores.find(p => p.codigo === codigo);
+                
+                if (profe) {
+                    document.getElementById("nombre").value = profe.nombre;
+                    document.getElementById("apellido").value = profe.apellido;
+                    document.getElementById("curso").value = profe.curso;
+                }
+            }
+        });
     }
-}
+    
+    const btnGuardar = document.getElementById("btnGuardar");
+    if (btnGuardar) {
+        btnGuardar.addEventListener("click", function () {
+            const codigoProfe = document.getElementById("codigoProfe").value.trim().toUpperCase();
+            const nombre = document.getElementById("nombre").value.trim();
+            const apellido = document.getElementById("apellido").value.trim();
+            const curso = document.getElementById("curso").value.trim();
+            const serie = document.getElementById("selectPC").value;
 
+            if (codigoProfe === "" || nombre === "" || apellido === "" || curso === "") {
+                alert("Por favor, completá todos los campos.");
+                return;
+            }
 
-const btnGuardar = document.getElementById("btnGuardar");
-if (btnGuardar) {
-    btnGuardar.addEventListener("click", function () {
-        const codigoProfe = document.getElementById("codigoProfe").value.trim().toUpperCase();
-        const serie = document.getElementById("selectPC").value;
+            let profesores = JSON.parse(localStorage.getItem("baseProfesores")) || [];
+            let profeValido = profesores.find(p => p.codigo === codigoProfe);
 
-        if (codigoProfe === "" || serie === "") {
-            alert("Por favor, ingresá el código del profesor y seleccioná una computadora.");
-            return;
-        }
+            if (!profeValido) {
+                alert("El código de profesor no es válido. Pedile al profe que se registre primero.");
+                return;
+            }
 
-        let profesores = JSON.parse(localStorage.getItem("baseProfesores")) || [];
-        let profeValido = profesores.find(p => p.codigo === codigoProfe);
+            // doble no deja que se registre doble pc 
+            let historial = JSON.parse(localStorage.getItem("historialPrestamos")) || [];
+            let pcOcupada = historial.find(prestamo => prestamo.serie === serie && prestamo.estado === "Prestada");
 
-        if (!profeValido) {
-            alert(" El código de profesor no es válido. Pedile al profe que se registre primero.");
-            return;
-        }
+            if (pcOcupada) {
+                alert("¡ERROR!\nLa computadora con serie " + serie + " ya está prestada a " + pcOcupada.nombre + " " + pcOcupada.apellido + ".\n\nPrimero tenés que ir al Historial y registrar la devolución.");
+                return; 
+            }
+        
 
-        const nuevoPrestamo = {
-            codigoProfe: codigoProfe,
-            nombre: profeValido.nombre,      
-            apellido: profeValido.apellido,
-            curso: profeValido.curso,        
-            serie: serie,
-            estado: "Prestada",
-            fecha: new Date().toLocaleDateString()
-        };
+            const nuevoPrestamo = {
+                codigoProfe: codigoProfe,
+                nombre: nombre,
+                apellido: apellido,
+                curso: curso,
+                serie: serie,
+                estado: "Prestada",
+                fecha: new Date().toLocaleDateString()
+            };
 
-        let historial = JSON.parse(localStorage.getItem("historialPrestamos")) || [];
-        historial.push(nuevoPrestamo);
-        localStorage.setItem("historialPrestamos", JSON.stringify(historial));
+            historial.push(nuevoPrestamo);
+            localStorage.setItem("historialPrestamos", JSON.stringify(historial));
 
-        alert(" ¡Préstamo guardado a nombre de " + profeValido.nombre + " " + profeValido.apellido + "!");
-        document.getElementById("formPrestamo").reset();
-    });
-}//llllllllllllllllllllllllllllllllll
+            alert("¡Préstamo guardado!\nSe prestó la compu con serie: " + serie);
+            document.getElementById("formPrestamo").reset();
+        });
+    }
 
     const btnRegistrarProfe = document.getElementById("btnRegistrarProfe");
     if (btnRegistrarProfe) {
@@ -102,10 +112,31 @@ if (btnGuardar) {
                 return;
             }
 
+            // gmail
+            const validarEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!validarEmail.test(email)) {
+                alert(" Correo no corresponde escribi bien , por ejemplo: nombre@gmail.com");
+                document.getElementById("profEmail").focus();
+                return; 
+            }
+            // antiduplicados 
+            let profesores = JSON.parse(localStorage.getItem("baseProfesores")) || [];
+            
+           
+            let existeEmail = profesores.find(p => p.email.toLowerCase() === email.toLowerCase());
+            let existeNombre = profesores.find(p => p.nombre.toLowerCase() === nombre.toLowerCase() && p.apellido.toLowerCase() === apellido.toLowerCase());
+
+            if (existeEmail || existeNombre) {
+                let profeDuplicado = existeEmail || existeNombre;
+                alert(" Este profesor ya está registrado.\n\nSu código es: " + profeDuplicado.codigo + "\n\nUsá ese código para cargar el préstamo.");
+                return;
+            }
+        
+
             let codigoAleatorio = Math.random().toString(36).substring(2, 6).toUpperCase();
             let codigoProfe = "PROF-" + codigoAleatorio;
 
-            let profesores = JSON.parse(localStorage.getItem("baseProfesores")) || [];
+
             profesores.push({ 
                 codigo: codigoProfe, nombre: nombre, apellido: apellido, 
                 email: email, curso: curso, materia: materia 
@@ -119,7 +150,6 @@ if (btnGuardar) {
         });
     }
 
- S 
     const tablaHistorial = document.getElementById("tablaHistorial");
     if (tablaHistorial) {
         const historial = JSON.parse(localStorage.getItem("historialPrestamos")) || [];
@@ -147,13 +177,12 @@ if (btnGuardar) {
         });
     }
 
-
     window.devolverPC = function(index) {
         let historial = JSON.parse(localStorage.getItem("historialPrestamos")) || [];
         historial[index].estado = "Devuelta";
         localStorage.setItem("historialPrestamos", JSON.stringify(historial));
         alert("Netbook devuelta correctamente. El estado se actualizó.");
-        location.reload();
+        location.reload(); 
     }
 
 
@@ -178,7 +207,7 @@ if (btnGuardar) {
         });
     }
 
- 
+
     const btnBorrarTodo = document.getElementById("btnBorrarTodo");
     if (btnBorrarTodo) {
         btnBorrarTodo.addEventListener("click", function () {
@@ -188,4 +217,18 @@ if (btnGuardar) {
             }
         });
     }
+
+
+    const btnBorrarTodoAdmin = document.getElementById("btnBorrarTodoAdmin");
+    if (btnBorrarTodoAdmin) {
+        btnBorrarTodoAdmin.addEventListener("click", function () {
+            if (confirm(" ¿Estás seguro de que querés borrar TODOS los datos?\n\nSe eliminarán los profesores y todo el historial.")) {
+                localStorage.removeItem("baseProfesores");
+                localStorage.removeItem("historialPrestamos");
+                alert(" Todos los datos fueron eliminados. El sistema está como nuevo.");
+                location.reload();
+            }
+        });
+    }
+
 });
