@@ -5,10 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cargar - Control de Netbooks EEST N°5</title>
     <link rel="stylesheet" href="indexpruebaestili.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Milonga&display=swap" rel="stylesheet">
     <style>
         .oculto { display: none; }
         .link-cambio { display: block; margin-top: 20px; font-size: 14px; color: #0056b3; font-weight: bold; cursor: pointer; text-decoration: underline; }
         .panel-admin { background: #f4f4f4; padding: 15px; margin-top: 20px; border-radius: 5px; border: 1px solid #ccc; font-size: 14px;}
+    body,
+    body * {
+        font-family: 'Milonga', cursive !important;
+    }
     </style>
 </head>
 <body>
@@ -19,6 +26,7 @@
             <div class="agrupador">
                 
                 <div class="top-izquierdo" style="display: flex; flex-direction: column; align-items: flex-start; gap: 10px;">
+
 
                      <img src="images/logo-colegio.jpg" alt="Logo Colegio" class="mini-logo">
                     <div class="marca-escuela">E.E.S.T. N° 5</div>
@@ -40,7 +48,7 @@
                 <nav class="menu-navegacion">
                     <ul>
                         <li><a href="index.html">Inicio</a></li>
-                        <li><a href="registro.html" class="activo">Cargar Préstamo</a></li>
+                        <li><a href="registro.html" class="activo">Cargar préstamo</a></li>
                         <li><a href="historial.html">Historial</a></li>
                         <li><a href="reglas.html">Reglamento</a></li>
                     </ul>
@@ -53,19 +61,19 @@
                     <h1 class="titulo-principal">NUEVO PRÉSTAMO</h1>
                     
                     <form id="formPrestamo" class="formulario-clean">
-                        <label class="etiqueta-form">Código del Profesor (Ej: PROF-A1B2):</label>
+                        <label class="etiqueta-form">Código del profesor (Ej: PROF-A1B2):</label>
                         <input type="text" id="codigoProfe" class="input-form" placeholder="Ingresá el código del profe" required>
 
-                        <label class="etiqueta-form">Nombre del Docente:</label>
+                        <label class="etiqueta-form">Nombre del docente:</label>
                         <input type="text" id="nombre" class="input-form" placeholder="Ej: Dario" required>
 
-                        <label class="etiqueta-form">Apellido del Docente:</label>
+                        <label class="etiqueta-form">Apellido del docente:</label>
                         <input type="text" id="apellido" class="input-form" placeholder="Ej: Martinez" required>
 
-                        <label class="etiqueta-form">Curso / Año:</label>
+                        <label class="etiqueta-form">Curso / año:</label>
                         <input type="text" id="curso" class="input-form" placeholder="Ej: 6to 1ra" required>
 
-                        <label class="etiqueta-form">Seleccionar Computadora:</label>
+                        <label class="etiqueta-form">Seleccionar computadora:</label>
                         <select id="selectPC" class="input-form" required>
                             <option value="" disabled selected>Elegí una netbook...</option>
                         </select>
@@ -73,15 +81,15 @@
                         <button type="button" id="btnGuardar" class="boton-fucsia-colorlib" style="border:none; margin-top:15px; cursor:pointer;">GUARDAR EN HISTORIAL</button>
                     </form>
 
-                    <a onclick="mostrarRegistroProfe()" class="link-cambio">¿El profesor no tiene código? Regístralo acá</a>
+                    <a onclick="mostrarRegistroProfe()" class="link-cambio">¿El profesor no tiene código? regístralo acá</a>
                     <br>
-                    <a id="btnVerAdmin" class="link-cambio" style="color: #d90429;">[Ver Panel de Administrador]</a>
+                    <a id="btnVerAdmin" class="link-cambio" style="color: #d90429;">[Ver Panel de administrador]</a>
                     
                     <div id="panelAdminDatos" class="panel-admin oculto">
-                        <h3>Profesores Registrados:</h3>
+                        <h3>Profesores registrados:</h3>
                         <ul id="listaProfesAdmin"></ul>
                         <hr>
-                        <h3>Historial de Préstamos:</h3>
+                        <h3>Historial de préstamos:</h3>
                         <ul id="listaHistorialAdmin"></ul>
                     </div>
                 </div>
@@ -109,13 +117,13 @@
                         <button type="button" id="btnRegistrarProfe" class="boton-fucsia-colorlib" style="border:none; margin-top:15px; cursor:pointer;">GENERAR CÓDIGO ÚNICO</button>
                     </form>
 
-                    <a onclick="mostrarPrestamo()" class="link-cambio">Volver a Cargar Préstamo</a>
+                    <a onclick="mostrarPrestamo()" class="link-cambio">Volver a cargar préstamo</a>
                 </div>
 
             </section>
 
         
-                <p class="pie-pagina"> 2026 - Diseñado por Estudiantes de la E.E.S.T. N° 5 -- Merlo</p>
+                <p class="pie-pagina"> 2026 - Diseñado por estudiantes de la E.E.S.T. N° 5 -- Merlo</p>
             </footer>
         </main>
     </div>
