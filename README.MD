@@ -17,6 +17,7 @@ Prof:pereira
 Lenguajes utilizados:
 HTML.
 CSS.
+JAVA SCRIPT.
 
 
 
