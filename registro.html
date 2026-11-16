@@ -60,27 +60,30 @@
                 <div id="pantallaPrestamo">
                     <h1 class="titulo-principal">NUEVO PRÉSTAMO</h1>
                     
-                    <form id="formPrestamo" class="formulario-clean">
-                        <label class="etiqueta-form">Código del profesor (Ej: PROF-A1B2):</label>
-                        <input type="text" id="codigoProfe" class="input-form" placeholder="Ingresá el código del profe" required>
 
-                        <label class="etiqueta-form">Nombre del docente:</label>
-                        <input type="text" id="nombre" class="input-form" placeholder="Ej: Dario" required>
+<form id="formPrestamo" class="formulario-clean">
+    
+    <label class="etiqueta-form">Código del profesor:</label>
 
-                        <label class="etiqueta-form">Apellido del docente:</label>
-                        <input type="text" id="apellido" class="input-form" placeholder="Ej: Martinez" required>
+    <input type="text" id="codigoProfe" class="input-form" placeholder="Ingresá el código" oninput="autocompletarProfe()" required>
 
-                        <label class="etiqueta-form">Curso / año:</label>
-                        <input type="text" id="curso" class="input-form" placeholder="Ej: 6to 1ra" required>
+    <label class="etiqueta-form">Nombre del docente:</label>
+    <input type="text" id="nombre" class="input-form" readonly placeholder="Se autocompleta...">
 
-                        <label class="etiqueta-form">Seleccionar computadora:</label>
-                        <select id="selectPC" class="input-form" required>
-                            <option value="" disabled selected>Elegí una netbook...</option>
-                        </select>
+    <label class="etiqueta-form">Apellido del docente:</label>
+    <input type="text" id="apellido" class="input-form" readonly placeholder="Se autocompleta...">
 
-                        <button type="button" id="btnGuardar" class="boton-fucsia-colorlib" style="border:none; margin-top:15px; cursor:pointer;">GUARDAR EN HISTORIAL</button>
-                    </form>
+    <label class="etiqueta-form">Curso / año:</label>
+    <input type="text" id="curso" class="input-form" readonly placeholder="Se autocompleta...">
 
+    <label class="etiqueta-form">Seleccionar computadora:</label>
+    <select id="selectPC" class="input-form" required>
+        <option value="" disabled selected>Elegí una netbook...</option>
+    </select>
+
+    <button type="button" id="btnGuardar" class="boton-fucsia-colorlib" style="border:none; margin-top:15px; cursor:pointer;">GUARDAR EN HISTORIAL</button>
+</form>
+            <!--correxion -->
                     <a onclick="mostrarRegistroProfe()" class="link-cambio">¿El profesor no tiene código? regístralo acá</a>
                     <br>
                     <a id="btnVerAdmin" class="link-cambio" style="color: #d90429;">[Ver Panel de administrador]</a>

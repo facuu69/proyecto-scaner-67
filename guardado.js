@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    // LISTA PRECARGADA DE COMPUTADORAS 
     const listaComputadoras = [
         { codigo: "PC-01", serie: "JM-1111" },
         { codigo: "PC-02", serie: "JM-2222" },
@@ -9,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { codigo: "PC-05", serie: "JM-5555" }
     ];
 
-    // FUNCIONES PARA CAMBIAR DE PANTALLA 
+    
     window.mostrarRegistroProfe = function() {
         document.getElementById("pantallaPrestamo").classList.add("oculto");
         document.getElementById("pantallaProfe").classList.remove("oculto");
@@ -20,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("pantallaPrestamo").classList.remove("oculto");
     }
 
-    // CARGAR LA LISTA DE COMPUS EN EL SELECT 
+
     const selectPC = document.getElementById("selectPC");
     if (selectPC) {
         listaComputadoras.forEach(pc => {
@@ -31,49 +30,64 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    //  LÓGICA PARA GUARDAR UN PRÉSTAMO 
-    const btnGuardar = document.getElementById("btnGuardar");
-    if (btnGuardar) {
-        btnGuardar.addEventListener("click", function () {
-            const codigoProfe = document.getElementById("codigoProfe").value.trim().toUpperCase();
-            const nombre = document.getElementById("nombre").value.trim();
-            const apellido = document.getElementById("apellido").value.trim();
-            const curso = document.getElementById("curso").value.trim();
-            const serie = document.getElementById("selectPC").value;
+  
+window.autocompletarProfe = function() {
+    const codigoProfe = document.getElementById("codigoProfe").value.trim().toUpperCase();
+    let profesores = JSON.parse(localStorage.getItem("baseProfesores")) || [];
+    let profeValido = profesores.find(p => p.codigo === codigoProfe);
 
-            if (codigoProfe === "" || nombre === "" || apellido === "" || curso === "") {
-                alert("Por favor, completá todos los campos.");
-                return;
-            }
-
-            let profesores = JSON.parse(localStorage.getItem("baseProfesores")) || [];
-            let profeValido = profesores.find(p => p.codigo === codigoProfe);
-
-            if (!profeValido) {
-                alert(" El código de profesor no es válido. Pedile al profe que se registre primero.");
-                return;
-            }
-
-            const nuevoPrestamo = {
-                codigoProfe: codigoProfe,
-                nombre: nombre,
-                apellido: apellido,
-                curso: curso,
-                serie: serie,
-                estado: "Prestada",
-                fecha: new Date().toLocaleDateString()
-            };
-
-            let historial = JSON.parse(localStorage.getItem("historialPrestamos")) || [];
-            historial.push(nuevoPrestamo);
-            localStorage.setItem("historialPrestamos", JSON.stringify(historial));
-
-            alert(" ¡Préstamo guardado!\nSe prestó la compu con serie: " + serie);
-            document.getElementById("formPrestamo").reset();
-        });
+    if (profeValido) {
+        
+        document.getElementById("nombre").value = profeValido.nombre;
+        document.getElementById("apellido").value = profeValido.apellido;
+        document.getElementById("curso").value = profeValido.curso;
+    } else {
+     
+        document.getElementById("nombre").value = "";
+        document.getElementById("apellido").value = "";
+        document.getElementById("curso").value = "";
     }
+}
 
-    //  LÓGICA PARA REGISTRAR AL PROFE 
+
+const btnGuardar = document.getElementById("btnGuardar");
+if (btnGuardar) {
+    btnGuardar.addEventListener("click", function () {
+        const codigoProfe = document.getElementById("codigoProfe").value.trim().toUpperCase();
+        const serie = document.getElementById("selectPC").value;
+
+        if (codigoProfe === "" || serie === "") {
+            alert("Por favor, ingresá el código del profesor y seleccioná una computadora.");
+            return;
+        }
+
+        let profesores = JSON.parse(localStorage.getItem("baseProfesores")) || [];
+        let profeValido = profesores.find(p => p.codigo === codigoProfe);
+
+        if (!profeValido) {
+            alert(" El código de profesor no es válido. Pedile al profe que se registre primero.");
+            return;
+        }
+
+        const nuevoPrestamo = {
+            codigoProfe: codigoProfe,
+            nombre: profeValido.nombre,      
+            apellido: profeValido.apellido,
+            curso: profeValido.curso,        
+            serie: serie,
+            estado: "Prestada",
+            fecha: new Date().toLocaleDateString()
+        };
+
+        let historial = JSON.parse(localStorage.getItem("historialPrestamos")) || [];
+        historial.push(nuevoPrestamo);
+        localStorage.setItem("historialPrestamos", JSON.stringify(historial));
+
+        alert(" ¡Préstamo guardado a nombre de " + profeValido.nombre + " " + profeValido.apellido + "!");
+        document.getElementById("formPrestamo").reset();
+    });
+}//llllllllllllllllllllllllllllllllll
+
     const btnRegistrarProfe = document.getElementById("btnRegistrarProfe");
     if (btnRegistrarProfe) {
         btnRegistrarProfe.addEventListener("click", function () {
@@ -98,14 +112,14 @@ document.addEventListener("DOMContentLoaded", function () {
             });
             localStorage.setItem("baseProfesores", JSON.stringify(profesores));
 
-            alert("✅ ¡Registro exitoso!\n\nProfesor: " + nombre + " " + apellido + "\nCódigo único: " + codigoProfe);
+            alert(" ¡Registro exitoso!\n\nProfesor: " + nombre + " " + apellido + "\nCódigo único: " + codigoProfe);
             
             document.getElementById("formProfe").reset();
             mostrarPrestamo();
         });
     }
 
-    //  LÓGICA PARA LA TABLA DEL HISTORIAL Y DEVOLUCIONES 
+ S 
     const tablaHistorial = document.getElementById("tablaHistorial");
     if (tablaHistorial) {
         const historial = JSON.parse(localStorage.getItem("historialPrestamos")) || [];
@@ -133,16 +147,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    //  FUNCIÓN PARA DEVOLVER LA PC 
+
     window.devolverPC = function(index) {
         let historial = JSON.parse(localStorage.getItem("historialPrestamos")) || [];
         historial[index].estado = "Devuelta";
         localStorage.setItem("historialPrestamos", JSON.stringify(historial));
         alert("Netbook devuelta correctamente. El estado se actualizó.");
-        location.reload(); // Recarga la página para mostrar el cambio
+        location.reload();
     }
 
-    //  LÓGICA PARA EL PANEL DE ADMINISTRADOR 
+
     const btnVerAdmin = document.getElementById("btnVerAdmin");
     const panelAdminDatos = document.getElementById("panelAdminDatos");
     
@@ -164,7 +178,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    //  LÓGICA PARA BORRAR EL HISTORIAL 
+ 
     const btnBorrarTodo = document.getElementById("btnBorrarTodo");
     if (btnBorrarTodo) {
         btnBorrarTodo.addEventListener("click", function () {
