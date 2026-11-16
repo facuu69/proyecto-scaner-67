@@ -46,7 +46,7 @@
                 <nav class="menu-navegacion">
                     <ul>
                         <li><a href="index.html">Inicio</a></li>
-                        <li><a href="registro.html" class="activo">Cargar Préstamo</a></li>
+                        <li><a href="registro.html" class="activo">Cargar préstamo</a></li>
                         <li><a href="historial.html">Historial</a></li>
                         <li><a href="reglas.html">Reglamento</a></li>
                     </ul>
@@ -59,19 +59,19 @@
                     <h1 class="titulo-principal">NUEVO PRÉSTAMO</h1>
                     
                     <form id="formPrestamo" class="formulario-clean">
-                        <label class="etiqueta-form">Código del Profesor (Ej: PROF-A1B2):</label>
+                        <label class="etiqueta-form">Código del profesor (Ej: PROF-A1B2):</label>
                         <input type="text" id="codigoProfe" class="input-form" placeholder="Ingresá el código del profe" required>
 
-                        <label class="etiqueta-form">Nombre del Docente:</label>
+                        <label class="etiqueta-form">Nombre del docente:</label>
                         <input type="text" id="nombre" class="input-form" placeholder="Ej: Dario" required>
 
-                        <label class="etiqueta-form">Apellido del Docente:</label>
+                        <label class="etiqueta-form">Apellido del docente:</label>
                         <input type="text" id="apellido" class="input-form" placeholder="Ej: Martinez" required>
 
-                        <label class="etiqueta-form">Curso / Año:</label>
+                        <label class="etiqueta-form">Curso / año:</label>
                         <input type="text" id="curso" class="input-form" placeholder="Ej: 6to 1ra" required>
 
-                        <label class="etiqueta-form">Seleccionar Computadora:</label>
+                        <label class="etiqueta-form">Seleccionar computadora:</label>
                         <select id="selectPC" class="input-form" required>
                             <option value="" disabled selected>Elegí una netbook...</option>
                         </select>
@@ -79,15 +79,15 @@
                         <button type="button" id="btnGuardar" class="boton-fucsia-colorlib" style="border:none; margin-top:15px; cursor:pointer;">GUARDAR EN HISTORIAL</button>
                     </form>
 
-                    <a onclick="mostrarRegistroProfe()" class="link-cambio">¿El profesor no tiene código? Regístralo acá</a>
+                    <a onclick="mostrarRegistroProfe()" class="link-cambio">¿El profesor no tiene código? regístralo acá</a>
                     <br>
-                    <a id="btnVerAdmin" class="link-cambio" style="color: #d90429;">[Ver Panel de Administrador]</a>
+                    <a id="btnVerAdmin" class="link-cambio" style="color: #d90429;">[Ver Panel de administrador]</a>
                     
                     <div id="panelAdminDatos" class="panel-admin oculto">
-                        <h3>Profesores Registrados:</h3>
+                        <h3>Profesores registrados:</h3>
                         <ul id="listaProfesAdmin"></ul>
                         <hr>
-                        <h3>Historial de Préstamos:</h3>
+                        <h3>Historial de préstamos:</h3>
                         <ul id="listaHistorialAdmin"></ul>
                     </div>
                 </div>
@@ -115,13 +115,13 @@
                         <button type="button" id="btnRegistrarProfe" class="boton-fucsia-colorlib" style="border:none; margin-top:15px; cursor:pointer;">GENERAR CÓDIGO ÚNICO</button>
                     </form>
 
-                    <a onclick="mostrarPrestamo()" class="link-cambio">Volver a Cargar Préstamo</a>
+                    <a onclick="mostrarPrestamo()" class="link-cambio">Volver a cargar préstamo</a>
                 </div>
 
             </section>
 
         
-                <p class="pie-pagina"> 2026 - Diseñado por Estudiantes de la E.E.S.T. N° 5 -- Merlo</p>
+                <p class="pie-pagina"> 2026 - Diseñado por estudiantes de la E.E.S.T. N° 5 -- Merlo</p>
             </footer>
         </main>
     </div>
