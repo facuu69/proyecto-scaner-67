@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    // --- LISTA PRECARGADA DE COMPUTADORAS ---
+    // LISTA PRECARGADA DE COMPUTADORAS 
     const listaComputadoras = [
         { codigo: "PC-01", serie: "JM-1111" },
         { codigo: "PC-02", serie: "JM-2222" },
@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         { codigo: "PC-05", serie: "JM-5555" }
     ];
 
-    // --- FUNCIONES PARA CAMBIAR DE PANTALLA ---
+    // FUNCIONES PARA CAMBIAR DE PANTALLA 
     window.mostrarRegistroProfe = function() {
         document.getElementById("pantallaPrestamo").classList.add("oculto");
         document.getElementById("pantallaProfe").classList.remove("oculto");
@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("pantallaPrestamo").classList.remove("oculto");
     }
 
-    // --- CARGAR LA LISTA DE COMPUS EN EL SELECT ---
+    // CARGAR LA LISTA DE COMPUS EN EL SELECT 
     const selectPC = document.getElementById("selectPC");
     if (selectPC) {
         listaComputadoras.forEach(pc => {
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // --- LÓGICA PARA GUARDAR UN PRÉSTAMO ---
+    //  LÓGICA PARA GUARDAR UN PRÉSTAMO 
     const btnGuardar = document.getElementById("btnGuardar");
     if (btnGuardar) {
         btnGuardar.addEventListener("click", function () {
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let profeValido = profesores.find(p => p.codigo === codigoProfe);
 
             if (!profeValido) {
-                alert("❌ El código de profesor no es válido. Pedile al profe que se registre primero.");
+                alert(" El código de profesor no es válido. Pedile al profe que se registre primero.");
                 return;
             }
 
@@ -68,12 +68,12 @@ document.addEventListener("DOMContentLoaded", function () {
             historial.push(nuevoPrestamo);
             localStorage.setItem("historialPrestamos", JSON.stringify(historial));
 
-            alert("✅ ¡Préstamo guardado!\nSe prestó la compu con serie: " + serie);
+            alert(" ¡Préstamo guardado!\nSe prestó la compu con serie: " + serie);
             document.getElementById("formPrestamo").reset();
         });
     }
 
-    // --- LÓGICA PARA REGISTRAR AL PROFE ---
+    //  LÓGICA PARA REGISTRAR AL PROFE 
     const btnRegistrarProfe = document.getElementById("btnRegistrarProfe");
     if (btnRegistrarProfe) {
         btnRegistrarProfe.addEventListener("click", function () {
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // --- LÓGICA PARA LA TABLA DEL HISTORIAL Y DEVOLUCIONES ---
+    //  LÓGICA PARA LA TABLA DEL HISTORIAL Y DEVOLUCIONES 
     const tablaHistorial = document.getElementById("tablaHistorial");
     if (tablaHistorial) {
         const historial = JSON.parse(localStorage.getItem("historialPrestamos")) || [];
@@ -133,16 +133,16 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // --- FUNCIÓN PARA DEVOLVER LA PC ---
+    //  FUNCIÓN PARA DEVOLVER LA PC 
     window.devolverPC = function(index) {
         let historial = JSON.parse(localStorage.getItem("historialPrestamos")) || [];
         historial[index].estado = "Devuelta";
         localStorage.setItem("historialPrestamos", JSON.stringify(historial));
-        alert("✅ Netbook devuelta correctamente. El estado se actualizó.");
+        alert("Netbook devuelta correctamente. El estado se actualizó.");
         location.reload(); // Recarga la página para mostrar el cambio
     }
 
-    // --- LÓGICA PARA EL PANEL DE ADMINISTRADOR ---
+    //  LÓGICA PARA EL PANEL DE ADMINISTRADOR 
     const btnVerAdmin = document.getElementById("btnVerAdmin");
     const panelAdminDatos = document.getElementById("panelAdminDatos");
     
@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // --- LÓGICA PARA BORRAR EL HISTORIAL ---
+    //  LÓGICA PARA BORRAR EL HISTORIAL 
     const btnBorrarTodo = document.getElementById("btnBorrarTodo");
     if (btnBorrarTodo) {
         btnBorrarTodo.addEventListener("click", function () {
